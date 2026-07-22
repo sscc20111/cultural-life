@@ -1,15 +1,12 @@
 // app/detail/[id]/page.tsx
 import Header from "../components/Header";
 
-export default async function DetailPage({ params }: { params: { id: string } }) {
-  const res = await fetch(`https://example.com/movie-api/${params.id}`);
-  const detail = await res.json();
+export default async function DetailPage() {
 
   return (
     <div>
       <Header />
-      <h1>{detail.title}</h1>
-      <p>{detail.description}</p>
+      <h1>상세페이지</h1>
     </div>
   );
 }
