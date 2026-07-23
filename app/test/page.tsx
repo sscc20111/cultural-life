@@ -1,49 +1,76 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function TestPage() {
-  const [result1, setResult1] = useState<string>("");
-  const [result2, setResult2] = useState<string>("");
-  const [loading, setLoading] = useState(false);
+type Performance = {
+  rank: string;
+  id: string;
+  title: string;
+  period: string;
+  genre: string;
+  area: string;
+  venue: string;
+  poster: string;
+};
 
-  const fetchApis = async () => {
-    setLoading(true);
-    try {
-    //   const [r1] = await Promise.all([
-      const [r1, r2] = await Promise.all([
-        fetch("/api/kopis").then((r) => r.json()),
-        fetch("/api/seoul").then((r) => r.json()),
-      ]);
+export default function RankingPage() {
+  const [performances, setPerformances] = useState<Performance[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-      console.log("API1 raw:", r1);
-      console.log("API2 raw:", r2);
+  useEffect(() => {
+    fetch("/api/kopis")
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.ok) {
+          setPerformances(data.performances);
+        } else {
+          setError(data.error || "데이터를 불러오지 못했습니다.");
+        }
+      })
+      .catch((e) => setError(e.message))
+      .finally(() => setLoading(false));
+  }, []);
 
-      setResult1(JSON.stringify(r1, null, 2));
-      setResult2(JSON.stringify(r2, null, 2));
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setLoading(false);
-    }
-  };
+  if (loading) return <div style={{ padding: 24 }}>불러오는 중...</div>;
+  if (error) return <div style={{ padding: 24, color: "red" }}>{error}</div>;
 
   return (
-    <div style={{ padding: 24, fontFamily: "monospace" }}>
-      <h1>API 연동 테스트</h1>
-      <button onClick={fetchApis} disabled={loading}>
-        {loading ? "불러오는 중..." : "API 호출 테스트"}
-      </button>
-
-      <h2>API 1 결과</h2>
-      <pre style={{ background: "#f4f4f4", padding: 12, whiteSpace: "pre-wrap" }}>
-        {result1}
-      </pre>
-
-      <h2>API 2 결과</h2>
-      <pre style={{ background: "#f4f4f4", padding: 12, whiteSpace: "pre-wrap" }}>
-        {result2}
-      </pre>
+    <div style={{ padding: 24, maxWidth: 600, margin: "0 auto" }}>
+      <h1>공연 랭킹</h1>
+      <ol style={{ listStyle: "none", padding: 0 }}>
+        {performances.map((p) => (
+          <li
+            key={p.id}
+            style={{
+              display: "flex",
+              gap: 16,
+              marginBottom: 20,
+              paddingBottom: 20,
+              borderBottom: "1px solid #eee",
+            }}
+          >
+            <img
+              src={p.poster}
+              alt={p.title}
+              width={80}
+              height={110}
+              style={{ objectFit: "cover", borderRadius: 4 }}
+            />
+            <div>
+              <div style={{ fontWeight: "bold", fontSize: 14, color: "#888" }}>
+                {p.rank}위
+              </div>
+              <div style={{ fontWeight: "bold", fontSize: 16 }}>{p.title}</div>
+              <div style={{ fontSize: 14, color: "#555" }}>
+                {p.genre} · {p.area}
+              </div>
+              <div style={{ fontSize: 13, color: "#888" }}>{p.venue}</div>
+              <div style={{ fontSize: 13, color: "#888" }}>{p.period}</div>
+            </div>
+          </li>
+        ))}
+      </ol>
     </div>
   );
 }

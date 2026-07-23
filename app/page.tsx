@@ -9,7 +9,9 @@ export default function MainPage() {
     <div>
       <Header />
       <h1>메인 페이지</h1>
-      <h2>영화 랭킹 Top 10</h2>
+      <h2>seoul 베너</h2>
+      <h2>kopis 컨텐츠</h2>
+      <h2>kopis 축제 베너</h2>
     </div>
   );
 }
