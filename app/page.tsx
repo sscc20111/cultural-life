@@ -3,18 +3,17 @@
 import Header from "./components/Header";
 
 import RankingSection from "./components/main/RankingSection";
+import BannerSection from "./components/main/BannerSection";
+import FestivalSection from "./components/main/FestivalSection";
 
 export default function MainPage() {
 
   return (
     <div>
       <Header />
-      <h1>메인 페이지</h1>
-      <h2>seoul 베너</h2>
-
+      <BannerSection />
       <RankingSection />
-
-      <h2>kopis 축제 베너</h2>
+      <FestivalSection />
     </div>
   );
 }

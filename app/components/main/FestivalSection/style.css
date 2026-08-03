@@ -1,0 +1,186 @@
+/* style.css */
+
+.festival-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* ---------- 헤더 영역 ---------- */
+.festival__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.festival__title {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 24px;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.festival__title-arrow {
+    font-size: 20px;
+    color: #999;
+    font-weight: 400;
+}
+
+.festival__controls {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: #1b2a4a;
+    border-radius: 999px;
+    padding: 6px 10px;
+}
+
+.festival__control-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.festival__control-divider {
+    width: 1px;
+    height: 14px;
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* ---------- 카드 ---------- */
+.festival__slide {
+    height: auto;
+}
+
+.festival__card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.festival__image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #eee;
+    cursor: pointer;
+}
+
+.festival__image img {
+    object-fit: cover;
+}
+
+/* 좌상단 장르 태그 */
+.festival__genre-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 2;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.55);
+}
+
+/* 중앙 재생 버튼 */
+.festival__play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.35);
+    color: #fff;
+    font-size: 16px;
+    z-index: 2;
+    backdrop-filter: blur(2px);
+}
+
+/* ---------- 카드 하단 정보 ---------- */
+.festival__info {
+    padding: 12px 2px 0;
+}
+
+.festival__video-title {
+    margin: 0 0 4px;
+    font-size: 16px;
+    font-weight: 800;
+    color: #1a1a1a;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.festival__venue {
+    margin: 0 0 2px;
+    font-size: 13px;
+    color: #555;
+}
+
+.festival__period {
+    margin: 0;
+    font-size: 12px;
+    color: #999;
+}
+
+/* ---------- 페이지네이션 dots ---------- */
+.festival__dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 20px;
+}
+
+.festival__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ddd;
+    cursor: pointer;
+}
+
+.festival__dot--active {
+    width: 18px;
+    border-radius: 999px;
+    background: #1b2a4a;
+}
+
+/* ---------- 반응형 ---------- */
+@media (max-width: 1023px) {
+    .festival__title {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 639px) {
+    .festival__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+}

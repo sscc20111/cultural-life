@@ -17,3 +17,11 @@ export type FestivalItem = {// 공연 축제 항목의 타입 정의
     poster: string;// 공연 포스터 이미지 URL
     genre: string;// 공연 장르
 };
+
+export type BannerItem = {
+    title: string;
+    date: string;
+    place: string;
+    poster: string;
+    gradientColors: string[]; // [primary, secondary]
+}

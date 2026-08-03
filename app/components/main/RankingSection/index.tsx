@@ -1,5 +1,5 @@
-// app/page.tsx
 "use client";
+
 import { useEffect, useState, useMemo } from "react";
 import AreaSelector, {
   AreaCode,
@@ -57,7 +57,7 @@ export default function RankingSection() {
   }, [allPerformances, appliedArea, appliedGenre]);
 
   return (
-    <div>
+    <div className="ranking-section">
       <AreaSelector onSearch={handleSearch} performances={allPerformances} />
 
       {loading && <p>불러오는 중...</p>}
@@ -74,7 +74,7 @@ export default function RankingSection() {
           marginTop: 16,
         }}
       >
-        {filteredPerformances.map((item) => (
+        {filteredPerformances.slice(0, 10).map((item) => (
           <div key={item.id}>
             <img
               src={item.poster}
