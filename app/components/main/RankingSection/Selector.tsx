@@ -1,7 +1,7 @@
 // app/components/AreaSelector.tsx
 "use client";
 import { useState, useMemo } from "react";
-import type { RankingItem } from "@/lib/api/kopis/types";
+import type { RankingItem } from "@/app/api/types";
 
 export type AreaCode =
   | "ALL"

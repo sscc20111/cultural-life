@@ -7,7 +7,7 @@ import AreaSelector, {
   AREA_LIST,
   GENRE_LIST,
 } from "./Selector";
-import type { RankingItem } from "@/lib/api/kopis/types";
+import type { RankingItem } from "@/app/api/types";
 
 export default function RankingSection() {
   // API에서 최초 1회 받아온 전체 데이터

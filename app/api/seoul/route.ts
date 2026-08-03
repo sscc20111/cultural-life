@@ -1,4 +1,4 @@
-import { fetchXml, toArray, getRecentDateRange } from "@/lib/server/xmlFetch";
+import { fetchXml, toArray, getRecentDateRange } from "@/app/api/xmlFetch";
 import { Vibrant } from "node-vibrant/node";
 
 export const revalidate = 3600; // 1시간마다 재검증 (원본 API도 자주 안 바뀌니까)

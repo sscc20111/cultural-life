@@ -1,4 +1,4 @@
-import { fetchXml, toArray, getRecentDateRange } from "@/lib/server/xmlFetch";
+import { fetchXml, toArray, getRecentDateRange } from "@/app/api/xmlFetch";
 
 export async function GET(req: Request) {
     const Key = process.env.KPOPS_KEY;

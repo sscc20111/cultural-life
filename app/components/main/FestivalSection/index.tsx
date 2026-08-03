@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay, Navigation } from "swiper/modules"; // 수정: Navigation 모듈 추가
 import type { Swiper as SwiperType } from "swiper"; // 추가: swiper 인스턴스 타입
 import Image from "next/image";
-import type { FestivalItem } from "@/lib/api/kopis/types";
+import type { FestivalItem } from "@/app/api/types";
 
 import "swiper/css";
 import "swiper/css/pagination";

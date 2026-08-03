@@ -10,7 +10,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 
-import type { BannerItem } from "@/lib/api/kopis/types";
+import type { BannerItem } from "@/app/api/types";
 
 export default function BannerSection() {
     const [bannerData, setBannerData] = useState<BannerItem[]>([]);
