@@ -25,3 +25,21 @@ export type BannerItem = {
     poster: string;
     gradientColors: string[]; // [primary, secondary]
 }
+
+export type Relate = {
+    relatenm: string;
+    relateurl: string;
+};
+export type DetailData = {
+    title: string;
+    fcltynm: string;
+    prfcast: string;
+    period: string;
+    prfruntime: string;
+    dtguidance: string;
+    prfage: string;
+    pcseguidance: string;
+    poster: string;
+    styurls: { styurl: string | string[] };   // 객체 or 문자열
+    relates: Relate | Relate[]; // 객체 or 문자열
+}

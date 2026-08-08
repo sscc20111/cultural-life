@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { useEffect, useState, useMemo } from "react";
 import AreaSelector, {
   AreaCode,
@@ -25,7 +25,7 @@ export default function RankingSection() {
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch("/api/kopis/ranking?area=" + appliedArea + "&genre=" + appliedGenre);
+        const res = await fetch("/api/main/ranking?area=" + appliedArea + "&genre=" + appliedGenre);
         const data = await res.json();
         if (!data.ok) throw new Error(data.error ?? "데이터를 불러오지 못했습니다.");
         setAllPerformances(data.performances);
@@ -75,7 +75,7 @@ export default function RankingSection() {
         }}
       >
         {filteredPerformances.slice(0, 10).map((item) => (
-          <div key={item.id}>
+          <Link key={item.id} href={`/detail/kopis/${item.id}`} style={{ textDecoration: "none", color: "inherit" }}>
             <img
               src={item.poster}
               alt={item.title}
@@ -91,7 +91,7 @@ export default function RankingSection() {
             </div>
             <p style={{ fontWeight: 600, marginTop: 6 }}>{item.title}</p>
             <p style={{ fontSize: 13, color: "#777" }}>{item.period}</p>
-          </div>
+          </Link>
         ))}
       </div>
 

@@ -19,7 +19,7 @@ export default function BannerSection() {
     useEffect(() => {
         const fetchBannerData = async () => {
             try {
-                const res = await fetch("/api/seoul");
+                const res = await fetch("/api/main/banner");
                 const data = await res.json();
                 if (!data.ok) throw new Error(data.error ?? "데이터를 불러오지 못했습니다.");
                 setBannerData(data.performances);

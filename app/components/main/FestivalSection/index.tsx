@@ -21,7 +21,7 @@ export default function FestivalSection() {
     useEffect(() => {
         const fetchFestivals = async () => {
             try {
-                const res = await fetch("/api/kopis/festival");
+                const res = await fetch("/api/main/festival");
                 const data = await res.json();
                 if (!data.ok) throw new Error(data.error ?? "데이터를 불러오지 못했습니다.");
                 setFestivalsData(data.performances);
