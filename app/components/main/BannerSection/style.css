@@ -13,7 +13,6 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 3rem 0;
 }
 
 /* 콘텐츠 폭 제한 담당 */
@@ -28,7 +27,7 @@
 
 .banner__image {
   position: relative;
-  width: 22%;
+  width: 28%;
   aspect-ratio: 3 / 4;
   flex-shrink: 0;
 }

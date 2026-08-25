@@ -3,7 +3,7 @@
 import Header from "../components/Header";
 
 export default function ListPage() {
- 
+
   return (
     <div>
       <Header />

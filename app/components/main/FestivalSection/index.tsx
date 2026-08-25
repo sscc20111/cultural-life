@@ -1,5 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react"; // 수정: useRef 추가 (커스텀 네비게이션 버튼 연결용)
+import Link from "next/link";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay, Navigation } from "swiper/modules"; // 수정: Navigation 모듈 추가
 import type { Swiper as SwiperType } from "swiper"; // 추가: swiper 인스턴스 타입
@@ -47,9 +49,9 @@ export default function FestivalSection() {
     return (
         <div className="festival-section">
             <div className="festival__header">
-                <h2 className="festival__title">
+                <Link href="/list/festival" className="festival__title">
                     문화 페스티벌 <span className="festival__title-arrow">›</span>
-                </h2>
+                </Link>
 
                 <div className="festival__controls">
                     <button
@@ -82,30 +84,30 @@ export default function FestivalSection() {
             </div>
 
             <Swiper
-                    modules={[Pagination, Autoplay, Navigation]}
-                    loop
-                    slidesPerView={3}
-                    spaceBetween={20}
-                    grabCursor
-                    autoplay={{
-                        delay: 4000,
-                        disableOnInteraction: false,
-                        pauseOnMouseEnter: true,
-                    }}
-                    pagination={{
-                        clickable: true,
-                        el: ".festival__dots",
-                        bulletClass: "festival__dot",
-                        bulletActiveClass: "festival__dot--active",
-                    }}
-                    breakpoints={{
-                        0: { slidesPerView: 1, spaceBetween: 10 },
-                        640: { slidesPerView: 2, spaceBetween: 16 },
-                        1024: { slidesPerView: 3, spaceBetween: 20 },
-                    }}
-                    onSwiper={(swiper) => (swiperRef.current = swiper)} // 추가
-                    onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-                    className="festival__swiper"
+                modules={[Pagination, Autoplay, Navigation]}
+                loop
+                slidesPerView={3}
+                spaceBetween={20}
+                grabCursor
+                autoplay={{
+                    delay: 4000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                }}
+                pagination={{
+                    clickable: true,
+                    el: ".festival__dots",
+                    bulletClass: "festival__dot",
+                    bulletActiveClass: "festival__dot--active",
+                }}
+                breakpoints={{
+                    0: { slidesPerView: 1, spaceBetween: 10 },
+                    640: { slidesPerView: 2, spaceBetween: 16 },
+                    1024: { slidesPerView: 3, spaceBetween: 20 },
+                }}
+                onSwiper={(swiper) => (swiperRef.current = swiper)} // 추가
+                onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+                className="festival__swiper"
             >
                 {festivalsData.map((item, index) => {
                     const isEven = index % 2 === 0;

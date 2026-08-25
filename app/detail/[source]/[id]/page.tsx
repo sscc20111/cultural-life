@@ -22,7 +22,7 @@ export default function DetailPage({ params }: { params: Promise<{ source: strin
   const { source, id } = use(params);
   const [detailData, setDetailData] = useState<DetailData | null>(null);
 
-  const url = source === "kopis" ? "/api/detail/kopis?id=" + id : "/api/seoul/detail?id=" + id;
+  const url = source === "kopis" ? "/api/detail/kopis?id=" + id : "/api/detail/seoul?id=" + id;
 
   useEffect(() => {
     const fetchDetail = async () => {

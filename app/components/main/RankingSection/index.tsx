@@ -57,7 +57,7 @@ export default function RankingSection() {
   }, [allPerformances, appliedArea, appliedGenre]);
 
   return (
-    <div className="ranking-section">
+    <div className="ranking-section max-w-[1200px] mx-auto px-6 py-10">
       <AreaSelector onSearch={handleSearch} performances={allPerformances} />
 
       {loading && <p>불러오는 중...</p>}
@@ -74,7 +74,7 @@ export default function RankingSection() {
           marginTop: 16,
         }}
       >
-        {filteredPerformances.slice(0, 10).map((item) => (
+        {filteredPerformances.slice(0, 12).map((item) => (
           <Link key={item.id} href={`/detail/kopis/${item.id}`} style={{ textDecoration: "none", color: "inherit" }}>
             <img
               src={item.poster}
