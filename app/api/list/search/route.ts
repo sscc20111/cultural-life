@@ -1,0 +1,34 @@
+// app/api/main/festival/route.ts
+import { fetchXml, toArray, getRecentDateRange } from "@/app/api/xmlFetch";
+
+export async function GET(req: Request) {
+    const Key = process.env.KPOPS_KEY;
+    try {
+        if (!Key) throw new Error("KPOPS_KEY 환경변수가 설정되지 않았습니다.");
+        const { searchParams } = new URL(req.url);
+        const page = Number(searchParams.get("page")) || 1;
+        const rows = 10; // 페이지당 개수 (기존 10 유지)
+        const title = searchParams.get("title") || ""; // title 쿼리값 읽기 (없으면 빈 문자열)
+
+        const { stdate, eddate } = getRecentDateRange(30); // 오늘 날짜를 기준으로 30일 전부터 오늘까지의 날짜 범위를 계산합니다.
+
+        let url = `http://www.kopis.or.kr/openApi/restful/pblprfr?service=${Key}&stdate=${stdate}&eddate=${eddate}&cpage=${page}&rows=${rows}`;
+        
+        if (title) url += `&shprfnm=${title}`;
+console.log(url)
+        const parsed = await fetchXml(url); // 주어진 URL에서 XML 데이터를 가져와 파싱합니다.
+        const list = toArray(parsed?.dbs?.db); // XML 데이터를 배열로 변환합니다.
+        const performances = list.map((item: any) => ({
+            id: item.mt20id,
+            title: item.prfnm,
+            period: `${item.prfpdfrom}~${item.prfpdto}`,
+            venue: item.fcltynm,
+            poster: item.poster,
+            genre: item.genrenm,
+        }));
+
+        return Response.json({ ok: true, count: performances.length, page, performances });
+    } catch (err: any) {
+        return Response.json({ ok: false, error: err.message }, { status: 500 });
+    }
+}

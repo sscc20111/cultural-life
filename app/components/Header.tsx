@@ -9,7 +9,7 @@ export default function Header() {
 
   const handleSearch = () => {
     // 임시로 리스트 페이지로 이동 (검색어 전달)
-    window.location.href = `/list?search=${query}`;
+    window.location.href = `/list/search?title=${query}`;
   };
 
   return (

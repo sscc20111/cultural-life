@@ -27,6 +27,7 @@ export default function ListPage({ params }: { params: Promise<{ source: string 
     const { source } = use(params); // 랭킹, 리스트 분기 코드
     const searchParams = useSearchParams(); // 랭킹의 경우 category 쿼리값을 읽어오기 위해 useSearchParams 사용
     const category = searchParams.get("category") ?? ""; // ?category=값 읽기 (없으면 빈 문자열)
+    const title = searchParams.get("title") ?? ""; // ?title=값 읽기 (없으면 빈 문자열)
     const isRanking = source === "ranking";
     useEffect(() => {
         const fetchListData = async () => {
@@ -38,9 +39,11 @@ export default function ListPage({ params }: { params: Promise<{ source: string 
                 if (category) {
                     query.set("category", category); // 값이 있을 때만 추가
                 }
+                if (title) {
+                    query.set("title", title); // 값이 있을 때만 추가
+                }
                 const res = await fetch(`/api/list/${source}?${query.toString()}`); // 조립된 query 사용
                 const data = await res.json();
-
                 if (!data.ok) throw new Error(data.error ?? "데이터를 불러오지 못했습니다.");
                 setListData(data.performances);
             } catch (err: any) {
@@ -58,6 +61,7 @@ export default function ListPage({ params }: { params: Promise<{ source: string 
                 <h1 className="text-xl font-bold text-black">리스트 페이지</h1>
                 <p className="text-sm text-gray-400">{source}</p>
                 <p className="text-sm text-gray-400">{category}</p>
+                <p className="text-sm text-gray-400">{title}</p>
             </div>
 
             {isRanking ? <ListColumn items={ListData} /> : <ListCard items={ListData} />}

@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 interface CardProps {
-    rank?: number,
+    rank?: number;
     id: string;
     title: string;
     period: string;
@@ -13,6 +13,16 @@ interface CardProps {
 }
 
 export default function ListCard({ items }: { items: CardProps[] }) {
+    // 추가: items가 비어있을 때 안내 메시지 표시
+    if (items.length === 0) {
+        return (
+            <div className="max-w-[1200px] mx-auto px-6 py-20 text-center text-gray-400">
+                죄송합니다. 데이터가 없습니다.<br />
+                30일간의 공연 데이터를 기준으로 검색어에 맞는 공연이 없을 수 있습니다.<br />
+            </div>
+        );
+    }
+
     return (
         <ul className="max-w-[1200px] mx-auto px-6 py-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-5 gap-y-6 list-none">
             {items.map((item) => (
