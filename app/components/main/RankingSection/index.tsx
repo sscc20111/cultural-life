@@ -81,7 +81,7 @@ export default function RankingSection() {
               alt={item.title}
               style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover", borderRadius: 8 }}
             />
-            <div style={{ display: "flex", gap: 6, marginTop: 8 }}>
+            <div style={{ display: "flex", gap: 6, marginTop: 8, color: "#4b4b4b" }}>
               <span style={{ fontSize: 12, padding: "2px 8px", border: "1px solid #ddd", borderRadius: 4 }}>
                 {item.genre}
               </span>
@@ -89,7 +89,7 @@ export default function RankingSection() {
                 {item.area}
               </span>
             </div>
-            <p style={{ fontWeight: 600, marginTop: 6 }}>{item.title}</p>
+            <p style={{ fontWeight: 600, marginTop: 6, color: "#000" }}>{item.title}</p>
             <p style={{ fontSize: 13, color: "#777" }}>{item.period}</p>
           </Link>
         ))}

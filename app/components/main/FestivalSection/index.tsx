@@ -127,9 +127,6 @@ export default function FestivalSection() {
                                             <span className="festival__genre-tag">{item.genre}</span>
                                         )}
 
-                                        <span className="festival__play-btn" aria-hidden>
-                                            ▶
-                                        </span>
                                     </div>
 
                                     <div className="festival__info">

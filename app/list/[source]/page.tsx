@@ -56,19 +56,8 @@ export default function ListPage({ params }: { params: Promise<{ source: string 
     return (
         <div className="min-h-screen bg-white">
             <Header />
-
-            <div className="max-w-[1200px] mx-auto px-6 pt-6 pb-2">
-                <h1 className="text-xl font-bold text-black">리스트 페이지</h1>
-                <p className="text-sm text-gray-400">{source}</p>
-                <p className="text-sm text-gray-400">{category}</p>
-                <p className="text-sm text-gray-400">{title}</p>
-            </div>
-
             {isRanking ? <ListColumn items={ListData} /> : <ListCard items={ListData} />}
-
-            {/* 하단 페이지네이션 */}
             {isRanking ? null : <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />}
-            
         </div>
     );
 }

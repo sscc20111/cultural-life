@@ -22,13 +22,13 @@ export default function Header() {
 
         {/* 검색창 */}
         <div className="flex-1 max-w-[520px]">
-          <div className="flex items-center border border-gray-300 rounded-full px-4 py-2">
+          <div className="flex items-center border text-black border-gray-600 rounded-full px-4 py-2">
             <input
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSearch()} // 엔터로 검색 가능
-              className="flex-1 outline-none text-sm placeholder:text-gray-400"
+              className="flex-1 outline-none text-sm placeholder:text-black"
             />
             <button onClick={handleSearch} aria-label="검색">
               <svg
